@@ -1,24 +1,4 @@
-# README
+# IOT Sandbox
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## Setting up the project
+* `rails new iot-sandbox -d postgresql --template "https://www.railsbytes.com/script/XnJs52" --skip-webpack-install` to use stimulus reflux, etc
