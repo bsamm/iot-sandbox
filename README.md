@@ -12,3 +12,9 @@
 * `particle login`
 * `particle token create`
 * `particle token revoke ####....`
+
+## Tools
+
+* Console: https://console.particle.io/devices
+* IDE: https://build.particle.io/build/new
+* Docs: https://docs.particle.io/reference/device-os/firmware/photon/s

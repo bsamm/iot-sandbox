@@ -23,6 +23,9 @@ void setup()
    Particle.function("led",ledToggle);
    // This is saying that when we ask the cloud for the function "led", it will employ the function ledToggle() from this app.
 
+   // Let's also set up a variable called led to check the current state of the led
+   Particle.variable("led", ledState);
+
    // For good measure, let's also make sure both LEDs are off when we start:
    digitalWrite(led1, LOW);
    digitalWrite(led2, LOW);
@@ -60,6 +63,18 @@ int ledToggle(String command) {
     else if (command=="off") {
         digitalWrite(led1,LOW);
         digitalWrite(led2,LOW);
+        return 0;
+    }
+    else {
+        return -1;
+    }
+}
+
+int ledState() {
+    if (digitalRead(led1) == HIGH && digitalRead(led2) == HIGH) {
+        return 1;
+    }
+    else if (digitalRead(led1) == LOW && digitalRead(led2) == LOW) {
         return 0;
     }
     else {
