@@ -16,12 +16,20 @@
       <tr>
         <th>Name</th>
         <th>Last Heard</th>
+        <th>Led Status</th>
         <th>Actions</th>
       </tr>
       <% @devices.each do |d| %>
         <tr>
           <td><%= d.name %></td>
           <td><%= d.last_heard %></td>
+          <td>
+            <% if @led_status == 1 %>
+              <span class="tag is-success">On</span>
+            <% else %>
+              <span class="tag is-danger">Off</span>
+            <% end %>
+          </td>
           <td>
             <div class="buttons">
               <%= button_to 'Toggle Led', pages_toggle_led_path, method: :post, class: "button is-warning" %>
