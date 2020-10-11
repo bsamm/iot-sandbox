@@ -12,31 +12,37 @@
 </section>
 <section class="with-bumpers">
   <div class="container">
-    <table class="table is-bordered">
-      <tr>
-        <th>Name</th>
-        <th>Last Heard</th>
-        <th>Led Status</th>
-        <th>Actions</th>
-      </tr>
-      <% @devices.each do |d| %>
+    <% if @devices.present? %>
+      <table class="table is-bordered">
         <tr>
-          <td><%= d.attributes[:name] %></td>
-          <td><%= d.attributes[:last_heard] %></td>
-          <td>
-            <% if d.attributes[:led_status] == 1 %>
-              <span class="tag is-success">On</span>
-            <% else %>
-              <span class="tag is-danger">Off</span>
-            <% end %>
-          </td>
-          <td>
-            <div class="buttons">
-              <%= button_to 'Toggle Led', pages_toggle_led_path, method: :post, params: { device_name: d.attributes[:name] }, class: "button is-warning" %>
-            </div>
-          </td>
+          <th>Name</th>
+          <th>Last Heard</th>
+          <th>Led Status</th>
+          <th>Actions</th>
         </tr>
-      <% end %>
-    </table>
+        <% @devices.each do |d| %>
+          <tr>
+            <td><%= d.attributes[:name] %></td>
+            <td><%= d.attributes[:last_heard] %></td>
+            <td>
+              <% if d.attributes[:led_status] == 1 %>
+                <span class="tag is-success">On</span>
+              <% else %>
+                <span class="tag is-danger">Off</span>
+              <% end %>
+            </td>
+            <td>
+              <div class="buttons">
+                <%= button_to 'Toggle Led', pages_toggle_led_path, method: :post, params: { device_name: d.attributes[:name] }, class: "button is-warning" %>
+              </div>
+            </td>
+          </tr>
+        <% end %>
+      </table>
+    <% else %>
+      <div class="notification">
+        There are no devices online at this time.
+      </div>
+    <% end %>
   </div>
 </section>
