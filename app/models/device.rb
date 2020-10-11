@@ -9,10 +9,6 @@ class Device
         }
     end
 
-    def first
-      all.first
-    end
-
     def extra_attributes(name)
       {
         :led_status => WebConnectedLed.new(name)&.status
