@@ -21,10 +21,10 @@
       </tr>
       <% @devices.each do |d| %>
         <tr>
-          <td><%= d.name %></td>
-          <td><%= d.last_heard %></td>
+          <td><%= d.attributes[:name] %></td>
+          <td><%= d.attributes[:last_heard] %></td>
           <td>
-            <% if @led_status == 1 %>
+            <% if d.attributes[:led_status] == 1 %>
               <span class="tag is-success">On</span>
             <% else %>
               <span class="tag is-danger">Off</span>
@@ -32,7 +32,7 @@
           </td>
           <td>
             <div class="buttons">
-              <%= button_to 'Toggle Led', pages_toggle_led_path, method: :post, class: "button is-warning" %>
+              <%= button_to 'Toggle Led', pages_toggle_led_path, method: :post, params: { device_name: d.attributes[:name] }, class: "button is-warning" %>
             </div>
           </td>
         </tr>
